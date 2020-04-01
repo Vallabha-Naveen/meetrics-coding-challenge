@@ -57,12 +57,12 @@ var getVisibleAdDimensions = function (elementBoundingBox) {
   var visibleAdWidth = elementBoundingBox.x < 0 ? (elementBoundingBox.width + elementBoundingBox.x) : elementBoundingBox.width;
   var visibleAdHeight = elementBoundingBox.y < 0 ? (elementBoundingBox.height + elementBoundingBox.y) : elementBoundingBox.height;
   if (visibleAdHeight < 0 || visibleAdWidth < 0) {
-    return { width: 0, height: 0 }
+    return { width: 0, height: 0 };
   }
   return {
     width: visibleAdWidth,
     height: visibleAdHeight
-  }
+  };
 }
 
 /**
