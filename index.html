@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Ad Detection</title>
+  <style>
+    body {
+      height: 2000px;
+      width: 2500px;
+    }
+
+    #ad {
+      width: 300px;
+      height: 250px;
+      background: #ee7202;
+      position: relative;
+      left: 100px;
+      top: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="ad">
+    ADVERTISEMENT
+  </div>
+</body>
+<script src="script.js"></script>
+<script>
+  var focused = true;
+  function printStatus() {
+    if (focused) {
+      if (typeof window.log === "function") {
+        window.log()
+      }
+
+      setTimeout(printStatus, 500);
+    }
+  }
+
+  /**
+   * 
+   * @description Registers focus and blur listeners and sets the focus based on event
+   */
+  function registerEvents() {
+    window.addEventListener('focus', function () {
+      focused = true;
+      printStatus();
+    });
+    window.addEventListener('blur', function () {
+      console.log('lost focus')
+      focused = false;
+    });
+  }
+
+  /**
+   * 
+   * @description calls registerEvents when document readyState turns complete
+   */
+  document.onreadystatechange = function () {
+    if (document.readyState === "complete") {
+      registerEvents();
+    }
+  }
+
+
+  printStatus();
+
+
+</script>
+
+</html>
